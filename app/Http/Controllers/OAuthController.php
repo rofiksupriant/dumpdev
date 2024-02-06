@@ -42,7 +42,7 @@ class OAuthController extends Controller
             return redirect()->route("dashboard");
         } catch
         (Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
 }

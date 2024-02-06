@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenerateCertificateController;
 use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -29,6 +30,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/certificate', [GenerateCertificateController::class, 'generate'])
+    ->middleware(['auth', 'verified'])
+    ->name('certificate');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
